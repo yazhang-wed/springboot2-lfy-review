@@ -17,9 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @ResponseResult
 @RequestMapping("/")
-public class HelloWorldController {
+public class PersonController {
 
-    @GetMapping("/user")
+    /**
+     * javabean参数自动封装模板
+     * @return
+     */
+    @GetMapping("/person")
     public Person getHelloWorld() {
         Person person = new Person();
         person.setName("张三");
@@ -28,16 +32,28 @@ public class HelloWorldController {
         return person;
     }
 
+    /**
+     * 测试放回字符串参数返回
+     * @return
+     */
     @GetMapping("/ok")
     public String getOK(){
         return "OK";
     }
 
+    /**
+     * 测试模板参数
+     * @return
+     */
     @GetMapping("/result")
     public Result result(){
         return ResultResponse.success();
     }
 
+    /**
+     * 空指针错误测试
+     * @return
+     */
     @GetMapping("/null")
     public String getNull(){
         String str = null;
@@ -45,7 +61,12 @@ public class HelloWorldController {
         return str;
     }
 
-    @GetMapping("/null1")
+    /**
+     * 自定义错误测试
+     * @return
+     * @throws AuthenticationException
+     */
+    @GetMapping("/my_null")
     public String getNull1() throws AuthenticationException{
         throw new AuthenticationException("自定义错误测试");
     }

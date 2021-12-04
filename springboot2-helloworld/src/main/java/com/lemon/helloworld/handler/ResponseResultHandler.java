@@ -2,6 +2,7 @@ package com.lemon.helloworld.handler;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lemon.helloworld.annotation.NotResponseWrap;
 import com.lemon.helloworld.annotation.ResponseResult;
 import com.lemon.helloworld.common.Result;
 import com.lemon.helloworld.common.ResultResponse;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.Response;
+import java.util.Objects;
 
 /**
  * @author LBK
@@ -26,29 +29,38 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @ControllerAdvice
 public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
-    public static final String RESPONSE_RESULT_ANN = "RESPONSE-RESULT-ANN";
+
+    public final String RESPONSE_RESULT_ANN = "RESPONSE-RESULT-ANN";
 
     // ObjectMapper 对象转换器
-     @Autowired
-     private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
 
     /**
      * 是否请求包含了包装注解 标记，没有直接返回不需要重写返回体
+     *
      * @param returnType
      * @param converterType
-     * @return 此处如果返回false,则不执行当前Advice的业务
+     * @return 此处如果返回false, 则不执行当前Advice的业务
      */
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
+
+        // 增加一个不包装的条件，配置了@NotResponseWrap注解就跳过包装。
+        if (Objects.equals(returnType.getParameterType(),Response.class) || returnType.hasMethodAnnotation(NotResponseWrap.class)) return false;
+
         //判断请求是否有包装标志
         ResponseResult responseResultAnn = (ResponseResult) request.getAttribute(RESPONSE_RESULT_ANN);
-        return responseResultAnn != null;
+        if (Objects.nonNull(responseResultAnn)) return true;
+
+        return false;
     }
 
     /**
      * 处理响应的具体业务方法
+     *
      * @param body
      * @param returnType
      * @param selectedContentType
