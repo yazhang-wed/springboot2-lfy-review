@@ -3,7 +3,7 @@ package com.lemon.practice.handler;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lemon.practice.annotation.NotResponseWrap;
-import com.lemon.practice.annotation.ResponseResult;
+import com.lemon.practice.annotation.ResponseWrap;
 import com.lemon.practice.common.Result;
 import com.lemon.practice.common.ResultResponse;
 import lombok.SneakyThrows;
@@ -16,7 +16,6 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import javax.xml.ws.Response;
 import java.util.Objects;
 
 /**
@@ -39,12 +38,11 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
      */
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        // 判断请求是否有不包装注解
-        if (Objects.equals(returnType.getParameterType(), Response.class) || returnType.hasMethodAnnotation(NotResponseWrap.class))
-            return false;
+        // 判断请求接口上是否标注不包装返回参数注解
+        if (returnType.hasMethodAnnotation(NotResponseWrap.class)) return false;
 
-        // 判断请求是否有包装注解
-        if (returnType.hasMethodAnnotation(ResponseResult.class)) return true;
+        // 判断请求接口，请求的类上是否标注包装返回参数注解
+        if (returnType.hasMethodAnnotation(ResponseWrap.class) || returnType.getDeclaringClass().isAnnotationPresent(ResponseWrap.class)) return true;
 
         return false;
     }

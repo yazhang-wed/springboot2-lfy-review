@@ -10,7 +10,7 @@ import java.util.Objects;
  * @author LBK
  * @create 2021-12-03 14:18
  */
-public class HttpContextUtil {
+public final class HttpContextUtil {
 
     private HttpContextUtil() {
     }

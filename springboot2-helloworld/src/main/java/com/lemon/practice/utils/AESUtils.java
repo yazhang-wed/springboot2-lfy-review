@@ -10,7 +10,9 @@ import java.util.Base64;
  * @author LBK
  * @create 2021-12-05 12:42
  */
-public class AESUtils {
+public final class AESUtils {
+
+    private AESUtils(){}
 
     private static final String AES_ALGORITHM = "AES/ECB/PKCS5Padding";
 

@@ -1,6 +1,6 @@
 package com.lemon.practice.controller;
 
-import com.lemon.practice.annotation.ResponseResult;
+import com.lemon.practice.annotation.ResponseWrap;
 import com.lemon.practice.bean.Person;
 import com.lemon.practice.common.Result;
 import com.lemon.practice.common.ResultResponse;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  * @author LBK
  * @create 2021-12-02 21:58
  */
+@ResponseWrap
 @RestController
 @RequestMapping("/")
 public class PersonController {
@@ -24,7 +24,6 @@ public class PersonController {
      * javabean参数自动封装模板
      * @return
      */
-    @ResponseResult
     @GetMapping("/person")
     public Person getHelloWorld() {
         Person person = new Person();
@@ -38,7 +37,7 @@ public class PersonController {
      * 测试放回字符串参数返回
      * @return
      */
-    @ResponseResult
+    @ResponseWrap
     @GetMapping("/ok")
     public String getOK(){
         return "OK";
@@ -74,3 +73,4 @@ public class PersonController {
         throw new AuthenticationException("自定义错误测试");
     }
 }
+

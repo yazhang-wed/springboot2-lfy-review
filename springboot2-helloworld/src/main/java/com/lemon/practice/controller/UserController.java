@@ -2,7 +2,7 @@ package com.lemon.practice.controller;
 
 import com.lemon.practice.annotation.Decrypt;
 import com.lemon.practice.annotation.Encrypt;
-import com.lemon.practice.annotation.ResponseResult;
+import com.lemon.practice.annotation.ResponseWrap;
 import com.lemon.practice.bean.User;
 import com.lemon.practice.common.Result;
 import com.lemon.practice.common.ResultResponse;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
  * @create 2021-12-04 14:41
  */
 @RestController
-@ResponseResult
+@ResponseWrap
 public class UserController {
 
     @Encrypt
