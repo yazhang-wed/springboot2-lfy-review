@@ -1,9 +1,9 @@
-package com.lemon.helloworld.handler;
+package com.lemon.practice.handler;
 
-import com.lemon.helloworld.common.Result;
-import com.lemon.helloworld.common.ResultCode;
-import com.lemon.helloworld.common.ResultResponse;
-import com.lemon.helloworld.exception.AuthenticationException;
+import com.lemon.practice.common.Result;
+import com.lemon.practice.common.ResultCode;
+import com.lemon.practice.common.ResultResponse;
+import com.lemon.practice.exception.AuthenticationException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

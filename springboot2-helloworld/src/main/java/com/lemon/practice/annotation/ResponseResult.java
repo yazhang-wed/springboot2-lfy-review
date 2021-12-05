@@ -1,4 +1,4 @@
-package com.lemon.helloworld.annotation;
+package com.lemon.practice.annotation;
 
 import java.lang.annotation.*;
 

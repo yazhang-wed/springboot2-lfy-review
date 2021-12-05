@@ -1,4 +1,4 @@
-package com.lemon.helloworld.common;
+package com.lemon.practice.common;
 
 import lombok.Data;
 

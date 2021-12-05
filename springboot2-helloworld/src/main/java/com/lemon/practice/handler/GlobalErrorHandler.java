@@ -1,9 +1,9 @@
-package com.lemon.helloworld.handler;
+package com.lemon.practice.handler;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.lemon.helloworld.common.Result;
-import com.lemon.helloworld.common.ResultCode;
-import com.lemon.helloworld.common.ResultResponse;
+import com.lemon.practice.common.Result;
+import com.lemon.practice.common.ResultCode;
+import com.lemon.practice.common.ResultResponse;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.stereotype.Component;

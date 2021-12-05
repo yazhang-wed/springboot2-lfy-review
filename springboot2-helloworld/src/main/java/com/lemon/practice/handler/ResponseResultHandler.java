@@ -1,12 +1,12 @@
-package com.lemon.helloworld.handler;
+package com.lemon.practice.handler;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lemon.helloworld.annotation.NotResponseWrap;
-import com.lemon.helloworld.annotation.ResponseResult;
-import com.lemon.helloworld.common.Result;
-import com.lemon.helloworld.common.ResultResponse;
-import com.lemon.helloworld.utils.HttpContextUtil;
+import com.lemon.practice.annotation.NotResponseWrap;
+import com.lemon.practice.annotation.ResponseResult;
+import com.lemon.practice.common.Result;
+import com.lemon.practice.common.ResultResponse;
+import com.lemon.practice.utils.HttpContextUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

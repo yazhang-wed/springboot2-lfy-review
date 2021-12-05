@@ -1,10 +1,10 @@
-package com.lemon.helloworld.controller;
+package com.lemon.practice.controller;
 
-import com.lemon.helloworld.annotation.ResponseResult;
-import com.lemon.helloworld.bean.Person;
-import com.lemon.helloworld.common.Result;
-import com.lemon.helloworld.common.ResultResponse;
-import com.lemon.helloworld.exception.AuthenticationException;
+import com.lemon.practice.annotation.ResponseResult;
+import com.lemon.practice.bean.Person;
+import com.lemon.practice.common.Result;
+import com.lemon.practice.common.ResultResponse;
+import com.lemon.practice.exception.AuthenticationException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

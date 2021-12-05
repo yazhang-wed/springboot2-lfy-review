@@ -1,6 +1,6 @@
-package com.lemon.helloworld.handler;
+package com.lemon.practice.handler;
 
-import com.lemon.helloworld.annotation.ResponseResult;
+import com.lemon.practice.annotation.ResponseResult;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 

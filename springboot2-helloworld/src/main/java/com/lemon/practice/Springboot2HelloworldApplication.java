@@ -1,4 +1,4 @@
-package com.lemon.helloworld;
+package com.lemon.practice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

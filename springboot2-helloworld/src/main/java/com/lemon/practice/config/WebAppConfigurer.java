@@ -1,6 +1,6 @@
-package com.lemon.helloworld.config;
+package com.lemon.practice.config;
 
-import com.lemon.helloworld.handler.ResponseResultInterceptor;
+import com.lemon.practice.handler.ResponseResultInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

@@ -1,4 +1,4 @@
-package com.lemon.helloworld.exception;
+package com.lemon.practice.exception;
 
 /**
  * 认证异常

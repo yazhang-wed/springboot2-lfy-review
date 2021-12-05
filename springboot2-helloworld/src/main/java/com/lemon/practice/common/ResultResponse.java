@@ -1,4 +1,4 @@
-package com.lemon.helloworld.common;
+package com.lemon.practice.common;
 
 /**
  * 响应结果返回封装

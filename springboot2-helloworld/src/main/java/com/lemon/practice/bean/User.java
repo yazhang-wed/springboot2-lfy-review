@@ -1,4 +1,4 @@
-package com.lemon.helloworld.bean;
+package com.lemon.practice.bean;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
