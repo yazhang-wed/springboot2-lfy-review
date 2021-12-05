@@ -6,7 +6,10 @@ import com.lemon.practice.annotation.ResponseResult;
 import com.lemon.practice.bean.User;
 import com.lemon.practice.common.Result;
 import com.lemon.practice.common.ResultResponse;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 

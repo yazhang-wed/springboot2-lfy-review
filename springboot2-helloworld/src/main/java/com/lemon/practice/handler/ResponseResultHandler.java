@@ -6,9 +6,7 @@ import com.lemon.practice.annotation.NotResponseWrap;
 import com.lemon.practice.annotation.ResponseResult;
 import com.lemon.practice.common.Result;
 import com.lemon.practice.common.ResultResponse;
-import com.lemon.practice.utils.HttpContextUtil;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -18,24 +16,19 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.xml.ws.Response;
 import java.util.Objects;
 
 /**
+ * 是否包装拦截器拦截器
  * @author LBK
  * @create 2021-12-03 12:07
  */
-@Slf4j
 @ControllerAdvice
 public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
 
-    public final String RESPONSE_RESULT_ANN = "RESPONSE-RESULT-ANN";
-
-    // ObjectMapper 对象转换器
     @Autowired
     private ObjectMapper objectMapper;
-
 
     /**
      * 是否请求包含了包装注解 标记，没有直接返回不需要重写返回体
@@ -46,14 +39,12 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
      */
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
+        // 判断请求是否有不包装注解
+        if (Objects.equals(returnType.getParameterType(), Response.class) || returnType.hasMethodAnnotation(NotResponseWrap.class))
+            return false;
 
-        // 增加一个不包装的条件，配置了@NotResponseWrap注解就跳过包装。
-        if (Objects.equals(returnType.getParameterType(),Response.class) || returnType.hasMethodAnnotation(NotResponseWrap.class)) return false;
-
-        //判断请求是否有包装标志
-        ResponseResult responseResultAnn = (ResponseResult) request.getAttribute(RESPONSE_RESULT_ANN);
-        if (Objects.nonNull(responseResultAnn)) return true;
+        // 判断请求是否有包装注解
+        if (returnType.hasMethodAnnotation(ResponseResult.class)) return true;
 
         return false;
     }

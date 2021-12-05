@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
  * @create 2021-12-05 12:49
  */
 @Component
-@ConfigurationProperties(prefix = "spring.lemon.encrypt")
+@ConfigurationProperties(prefix = "lemon.encrypt")
 public class EncryptProperties {
 
-    private final static String DEFAULT_KEY = "www.itboyhub.com";
+    private final static String DEFAULT_KEY = "www.1900.link";
     private String key = DEFAULT_KEY;
 
     public String getKey() {

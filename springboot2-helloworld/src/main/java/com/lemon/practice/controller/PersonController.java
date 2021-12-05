@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+
 
 /**
  * @author LBK
  * @create 2021-12-02 21:58
  */
 @RestController
-@ResponseResult
 @RequestMapping("/")
 public class PersonController {
 
@@ -23,6 +24,7 @@ public class PersonController {
      * javabean参数自动封装模板
      * @return
      */
+    @ResponseResult
     @GetMapping("/person")
     public Person getHelloWorld() {
         Person person = new Person();
@@ -36,6 +38,7 @@ public class PersonController {
      * 测试放回字符串参数返回
      * @return
      */
+    @ResponseResult
     @GetMapping("/ok")
     public String getOK(){
         return "OK";
@@ -46,7 +49,7 @@ public class PersonController {
      * @return
      */
     @GetMapping("/result")
-    public Result result(){
+    public Result result(HttpServletResponse response){
         return ResultResponse.success();
     }
 

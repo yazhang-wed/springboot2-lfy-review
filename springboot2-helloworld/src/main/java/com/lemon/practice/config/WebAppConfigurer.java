@@ -1,10 +1,6 @@
 package com.lemon.practice.config;
 
-import com.lemon.practice.handler.ResponseResultInterceptor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * web 配置类
@@ -13,20 +9,5 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration(proxyBeanMethods = false)
 public class WebAppConfigurer {
-    @Bean
-    public WebMvcConfigurer createWebMvcConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addInterceptors(InterceptorRegistry registry) {
-                /*
-                 * addInterceptor()：添加拦截器对象
-                 * addPathPatterns()：添加拦截的路径
-                 * excludePathPatterns()：添加放行的路径
-                 * */
-                registry.addInterceptor(new ResponseResultInterceptor())
-                        .addPathPatterns("/**")
-                        .excludePathPatterns("/", "/login", "/css/**", "/fonts/**", "/images/**", "/js/**");
-            }
-        };
-    }
+
 }
