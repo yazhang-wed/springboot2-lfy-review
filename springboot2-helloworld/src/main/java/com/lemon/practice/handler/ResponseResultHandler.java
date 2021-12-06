@@ -16,8 +16,6 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import java.util.Objects;
-
 /**
  * 是否包装拦截器拦截器
  * @author LBK
@@ -30,7 +28,7 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
     private ObjectMapper objectMapper;
 
     /**
-     * 是否请求包含了包装注解 标记，没有直接返回不需要重写返回体
+     * 是否请求包含了包装注解,或者标注了不包装注解
      *
      * @param returnType
      * @param converterType
